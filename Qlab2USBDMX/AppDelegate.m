@@ -62,12 +62,22 @@
     if ( ! [[NSFileManager defaultManager] fileExistsAtPath:LXUSBDMX_FTDID2XX_DRIVER_PATH] ) {
         [dmxbutton setEnabled:NO];
         statusString = @"Missing d2xx. ";
+    }else{
+        [self toggleDMX:self];
     }
     if ( ! [[NSFileManager defaultManager] fileExistsAtPath:LXUSBDMX_LIBUSB_DRIVER_PATH] ) {
         [udmxbutton setEnabled:NO];
         statusString = [NSString stringWithFormat:@"%@Missing libusb.", statusString];
+    }else{
+        [self toggleUDMX:self];
     }
+    
     [statusField setStringValue:statusString];
+    [self toggleEthernet:self];
+    
+    runningApplications = NSWorkspace.shared.runningApplications
+    
+    system("open /Applications/Qlab.app");
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -230,14 +240,8 @@
         [statusField setStringValue:@"Art-Net socket closed"];
     } else {
         LXDMXEthernetConfig* config = [LXDMXEthernetConfig dmxEthernetConfig];
-        config.inprotocol = (int)[[NSUserDefaults standardUserDefaults] integerForKey:LXDMX_IN_PROTOCOL];
-        if ( config.inprotocol == DMX_TYPE_SACN ) {
-            config.inuniverse = 1;
-            [protocolMatrix selectCellAtRow:0 column:1];
-        } else {
-            config.inuniverse = 0;
-            [protocolMatrix selectCellAtRow:0 column:0];
-        }
+        config.inuniverse = 0;
+        [protocolMatrix selectCellAtRow:0 column:0];
         config.insubnet = 0;
         
         config.outprotocol = -1;
@@ -247,18 +251,6 @@
         [LXDMXEthernetInterface initSharedInterfaceWithConfig:config];
         [[LXDMXEthernetInterface sharedDMXEthernetInterface] setEnableDMXIn:YES];
         [netbutton setTitle:@"Stop Art-Net"];
-    }
-}
-
--(IBAction) protocolMatrixChanged:(id) sender  {
-    if ( [protocolMatrix selectedColumn] == 0 ) {
-        [[NSUserDefaults standardUserDefaults] setInteger:DMX_TYPE_ARTNET10 forKey:LXDMX_IN_PROTOCOL];
-    } else {
-        [[NSUserDefaults standardUserDefaults] setInteger:DMX_TYPE_SACN forKey:LXDMX_IN_PROTOCOL];
-    }
-    if ( [LXDMXEthernetInterface sharedDMXEthernetInterface] ) {
-        [LXDMXEthernetInterface closeSharedDMXEthernetInterfaceForReset];
-        [self toggleEthernet:self];
     }
 }
 

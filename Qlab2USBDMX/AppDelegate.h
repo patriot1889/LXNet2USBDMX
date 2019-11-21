@@ -69,7 +69,6 @@
 -(IBAction) toggleDMX:(id) sender;
 -(IBAction) toggleUDMX:(id) sender;
 -(IBAction) toggleEthernet:(id) sender;
--(IBAction) protocolMatrixChanged:(id) sender;
 
 @end
 

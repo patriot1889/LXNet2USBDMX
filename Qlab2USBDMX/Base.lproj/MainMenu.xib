@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +19,6 @@
                 <outlet property="dmxbutton" destination="Dkb-SE-X8r" id="oeH-Vr-If5"/>
                 <outlet property="netStatus" destination="5Fb-vL-PaW" id="KMH-TK-1QA"/>
                 <outlet property="netbutton" destination="g7e-77-hLN" id="Opz-O0-CQZ"/>
-                <outlet property="protocolMatrix" destination="Y2F-CE-PXf" id="apl-V8-r9Q"/>
                 <outlet property="statusField" destination="wug-9B-H13" id="eDl-hh-73T"/>
                 <outlet property="udmxStatus" destination="GLu-im-2bl" id="JXh-Gb-b70"/>
                 <outlet property="udmxbutton" destination="ooM-Pj-Mkh" id="ZJ1-3r-d9s"/>
@@ -28,9 +28,9 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
-                <menuItem title="LXNet2USBDMX" id="1Xt-HY-uBw">
+                <menuItem title="Qlab2USBDMX" id="1Xt-HY-uBw">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="LXNet2USBDMX" systemMenu="apple" id="uQy-DD-JDr">
+                    <menu key="submenu" title="Qlab2USBDMX" systemMenu="apple" id="uQy-DD-JDr">
                         <items>
                             <menuItem title="About LXNet2USBDMX" id="5kV-Vb-QxS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -675,11 +675,11 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="LXNet2USBDMX" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="Qlab2USBDMX" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="461" height="205"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="461" height="205"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -727,34 +727,6 @@
                         <rect key="frame" x="358" y="110" width="14" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
-                    <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2F-CE-PXf">
-                        <rect key="frame" x="54" y="50" width="121" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        <size key="cellSize" width="59" height="24"/>
-                        <size key="intercellSpacing" width="3" height="0.0"/>
-                        <buttonCell key="prototype" type="radio" title="Art-Net" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="mini" inset="2" id="P61-58-Nn3">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="miniSystem"/>
-                        </buttonCell>
-                        <cells>
-                            <column>
-                                <buttonCell type="radio" title="Art-Net" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="mini" inset="2" id="BNx-l3-01q">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="miniSystem"/>
-                                </buttonCell>
-                            </column>
-                            <column>
-                                <buttonCell type="radio" title="sACN" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="mini" inset="2" id="djk-3I-l9L">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="miniSystem"/>
-                                </buttonCell>
-                            </column>
-                        </cells>
-                        <connections>
-                            <action selector="protocolMatrixChanged:" target="Voe-Tx-rLC" id="4V9-9a-PES"/>
-                        </connections>
-                    </matrix>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ooM-Pj-Mkh">
                         <rect key="frame" x="295" y="75" width="140" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -769,7 +741,7 @@
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Il-mV-FYF">
                         <rect key="frame" x="18" y="151" width="419" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="LXNet to USB DMX" id="tsv-li-gtx">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Qlab &gt; USBDMX" id="tsv-li-gtx">
                             <font key="font" metaFont="system" size="18"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
