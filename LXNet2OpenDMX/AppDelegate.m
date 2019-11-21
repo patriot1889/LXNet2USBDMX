@@ -199,6 +199,7 @@
         }
         [dmxbutton setTitle:@"Start OpenDMX"];
         openDMXInterface = NULL;
+        [CTStatusReporter alertUserToStatus:@"Stopped OpenDMX." level:CT_STATUS_LEVEL_NOLOG_GREEN];
     }
 }
 

@@ -203,7 +203,6 @@ void* _libdf2xx_dylibHandle = NULL;
     
     //post the status
     [self statusChange:0];
-    [CTStatusReporter alertUserToStatus:@"Stopped DMX." level:CT_STATUS_LEVEL_NOLOG_GREEN];
 }
 
 -(BOOL) isSending {
