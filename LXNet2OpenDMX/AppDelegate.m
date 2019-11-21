@@ -67,7 +67,6 @@
         [udmxbutton setEnabled:NO];
         statusString = [NSString stringWithFormat:@"%@Missing libusb.", statusString];
     }
-    
     [statusField setStringValue:statusString];
 }
 
@@ -199,6 +198,7 @@
         }
         [dmxbutton setTitle:@"Start OpenDMX"];
         openDMXInterface = NULL;
+        dmxStatus.ledstate = 0;
         [CTStatusReporter alertUserToStatus:@"Stopped OpenDMX." level:CT_STATUS_LEVEL_NOLOG_GREEN];
     }
 }
@@ -207,7 +207,12 @@
     if ( uDMXInterface == NULL ) {
         uDMXInterface = [[LXuDMXInterface alloc] init];
         [uDMXInterface startDevice];
-        [udmxbutton setTitle:@"Stop µDMX"];
+        if ( [uDMXInterface isActive] ) {
+            [udmxbutton setTitle:@"Stop µDMX"];
+        }else{
+            uDMXInterface = NULL;
+            [udmxbutton setTitle:@"Start µDMX"];
+        }
     } else {
         uDMXInterface = NULL;
         [udmxbutton setTitle:@"Start µDMX"];

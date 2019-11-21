@@ -196,6 +196,7 @@ static usb_dev_handle   *findDevice(void)
         if ( handle == NULL ) {
             if((handle = findDevice()) == NULL) {
                 [self statusChange:LXuDMX_STATE_RED];
+                active = NO;
                 NSLog(@"Could not find USB device \"uDMX\" with vid=0x%x pid=0x%x\n", USBDEV_SHARED_VENDOR, USBDEV_SHARED_PRODUCT);
             }
         }
@@ -212,8 +213,10 @@ static usb_dev_handle   *findDevice(void)
     
     if ( device_started ) {
         [self statusChange:LXuDMX_STATE_BLUE];
+        active = YES;
     } else {
         [self statusChange:LXuDMX_STATE_RED];
+        active = NO;
     }
 }
 
@@ -231,7 +234,12 @@ static usb_dev_handle   *findDevice(void)
         }
         
         handle = NULL;
+        active = NO;
     }
+}
+
+-(BOOL) isActive {
+    return active;
 }
 
 -(void) DMXReceived:(NSNotification*) note {

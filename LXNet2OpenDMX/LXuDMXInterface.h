@@ -52,6 +52,8 @@ NS_ASSUME_NONNULL_BEGIN
      */
     BOOL _usb_init_called;
     
+    BOOL active;
+    
     /*
      *  Array of DMX Level data including the start code
      */
@@ -70,6 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void) startDevice;
 -(void) closeDevice;
 -(void) DMXReceived:(NSNotification*) note;
+-(BOOL) isActive;
 
 @end
 

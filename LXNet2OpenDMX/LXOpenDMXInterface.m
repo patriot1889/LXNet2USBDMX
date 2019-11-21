@@ -83,7 +83,7 @@ void* _libdf2xx_dylibHandle = NULL;
             tries++;
         }
 
-        [CTStatusReporter alertUserToStatus:[NSString stringWithFormat:@"d2xx connection error: %@", [self ftErrorString:ft_Status]] level:CT_STATUS_INFORM_USER_RED];
+        [CTStatusReporter alertUserToStatus:[NSString stringWithFormat:@"!d2xx connection error: %@", [self ftErrorString:ft_Status]] level:CT_STATUS_INFORM_USER_RED];
         
     }       //<-_libdf2xx_dylibHandle != NULL
 
@@ -202,7 +202,7 @@ void* _libdf2xx_dylibHandle = NULL;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     //post the status
-    [self statusChange:0];
+    //[self statusChange:0];
 }
 
 -(BOOL) isSending {
