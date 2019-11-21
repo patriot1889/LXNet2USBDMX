@@ -2,6 +2,9 @@
 
 Qlab2USBDMX is a small utility that bridges the gap between Art-Net and an OpenDMX/uDMX USB interface, specifically for Qlab.
 
+## Download
+https://github.com/patriot1889/LXNet2USBDMX/releases
+
 ## Qlab settings
 For Qlab2USBDMX to work correctly, the _Use broadcast mode for Art-Net lighting_ setting must be enabled. The _Art-Net Lighting Network Interface_ must also be set to _Automatic_. (https://qlab.app/docs/v4/general/qlab-preferences/)
 
