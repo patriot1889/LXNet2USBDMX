@@ -75,6 +75,7 @@ void* _libdf2xx_dylibHandle = NULL;
             if (ft_Status == FT_OK) {
                 device_handle = rh;
                 [CTStatusReporter reportStatus:@"D2XX connection opened by device" level:CT_STATUS_LEVEL_GREEN];
+                [CTStatusReporter alertUserToStatus:@"OpenDMX Connection GOOD" level:CT_STATUS_LEVEL_NOLOG_GREEN];
                 return YES;
             }
             
@@ -202,7 +203,7 @@ void* _libdf2xx_dylibHandle = NULL;
     
     //post the status
     [self statusChange:0];
-    [CTStatusReporter reportStatus:@"Stopped DMX." level:CT_STATUS_LEVEL_NOLOG_INFO];
+    [CTStatusReporter alertUserToStatus:@"Stopped DMX." level:CT_STATUS_LEVEL_NOLOG_GREEN];
 }
 
 -(BOOL) isSending {

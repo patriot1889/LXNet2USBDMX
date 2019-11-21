@@ -122,7 +122,7 @@
         case LXuDMX_STATE_GREEN:
             if ( udmxStatus.ledstate != LXuDMX_STATE_GREEN ) {
                 udmxStatus.ledstate = LXuDMX_STATE_GREEN;
-                [statusField setStringValue:@""];
+                [statusField setStringValue:@"µDMX Connection GOOD"];
             }
             break;
         case LXuDMX_STATE_RED:
@@ -211,6 +211,7 @@
         uDMXInterface = NULL;
         [udmxbutton setTitle:@"Start µDMX"];
         udmxStatus.ledstate = LXuDMX_STATE_OFF;
+        [statusField setStringValue:@"Stopped µDMX."];
     }
 }
 
