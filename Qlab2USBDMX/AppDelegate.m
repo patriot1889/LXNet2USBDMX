@@ -74,9 +74,7 @@
     
     [statusField setStringValue:statusString];
     [self toggleEthernet:self];
-    
-    runningApplications = NSWorkspace.shared.runningApplications
-    
+        
     system("open /Applications/Qlab.app");
 }
 
